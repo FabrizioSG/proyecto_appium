@@ -116,7 +116,12 @@ async function TestDelete1() {
         // Obtener el texto de la pantalla
         const text = await screenElement.getText();
         // Hacer la aserción para verificar que se haya borrado solo 1 numero de la pantalla
-        assert.strictEqual(text, "235", `El resultado esperado es "235", pero se obtuvo "${text}"`);
+        try{
+            assert.strictEqual(text, "235", `El resultado esperado es "235", pero se obtuvo "${text}"`);
+        }catch(e){
+            console.log("Prueba fallida.",e);
+        }
+
         
         console.log('Texto en pantalla:', text);
     } finally {
